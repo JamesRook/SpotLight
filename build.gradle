@@ -1,0 +1,53 @@
+buildscript {
+  ext.configs = [
+      version: "2.0.5",
+      groupId: "com.github.jamesrook",
+      artifactId: "spotlight",
+      description: "Android Library that lights items for tutorials or walk-throughs etc...",
+      siteUrl: "https://github.com/jamesrook/Spotlight",
+      gitUrl: "https://github.com/jamesrook/Spotlight.git",
+      developerId: "jamesrook",
+      developerName: "jamesrook",
+      developerEmail: "jamesrook.ele@gmail.com",
+      licenseName: "The Apache Software License, Version 2.0",
+      licenseUrl: "http://www.apache.org/licenses/LICENSE-2.0.txt",
+
+      compileSdkVersion: 30,
+      minSdkVersion: 14,
+      targetSdkVersion: 30,
+  ]
+  ext.versions = [
+      kotlin: '1.4.31',
+  ]
+  ext.deps = [
+      androidPlugin: "com.android.tools.build:gradle:4.1.2",
+      kotlin: [
+          plugin: "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+          stdlib: "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+      ],
+      androidx: [
+          appcompat: "androidx.appcompat:appcompat:1.2.0",
+          constraintLayout: "androidx.constraintlayout:constraintlayout:2.0.1",
+      ],
+      leakcanary: 'com.squareup.leakcanary:leakcanary-android:2.4'
+  ]
+  repositories {
+    google()
+    jcenter()
+  }
+  dependencies {
+    classpath deps.androidPlugin
+    classpath deps.kotlin.plugin
+  }
+}
+
+allprojects {
+  repositories {
+    google()
+    jcenter()
+  }
+}
+
+task clean(type: Delete) {
+  delete rootProject.buildDir
+}
